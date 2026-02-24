@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale-1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
 </head>
 <body>
     <h2>ToDo App</h2>
     <input type="text" id="name" placeholder="Enter your task">
-    <button >Add Task</button>
-    <ol id="list">
-    </ol>
+    <button>Add Task</button>
+    <ol id="list"></ol>
+    
+    <script>
+        let input = document.querySelector("input");
+        let btn = document.querySelector("button");
+        let list = document.querySelector("#list");
+
+        btn.addEventListener("click", eventHandler);
+
+        function eventHandler() {
+            let data = input.value;
+
+            if (data === "") {
+                alert("Please enter your task");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerText = data;
+
+            list.appendChild(li);
+
+            input.value = "";
+
+            li.addEventListener("click", function() {
+                list.removeChild(li);
+            });
+        }
+    </script>
+
 </body>
 </html>
